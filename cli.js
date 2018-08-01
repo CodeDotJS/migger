@@ -36,9 +36,7 @@ const dim = str => {
 	return chalk.dim(str);
 };
 
-const cyan = () => {
-	return chalk.cyan.bold('✓');
-};
+const cyn = chalk.cyan.bold('✓');
 
 if (!arg || arg === '-h' || arg === '--help') {
 	log(`
@@ -100,7 +98,7 @@ if (arg === '-d' || arg === '--download') {
 		log();
 		spinner.text = 'Downloading files...';
 		Promise.all(arr.map(x => download(x, dir))).then(() => {
-			log(`\n${cyan('✓')} Download Complete! \n\n${cyan('✓')} ${arr.length} files saved in ${chalk.blue(dir)} \n`);
+			log(`\n${cyn} Download Complete! \n\n${cyn} ${arr.length} files saved in ${chalk.blue(dir)} \n`);
 			spinner.stop();
 		});
 	}).catch(err => {
@@ -113,7 +111,7 @@ if (arg === '-d' || arg === '--download') {
 if (arg === '-e' || arg === '--export') {
 	checkConnectionStatus();
 	mista(inf).then(res => {
-		log(`\n${cyan('✓')} Links Exported!\n\n${cyan('✓')} File saved as ${chalk.yellow(`${file}`)} in ${chalk.blue(dir)} \n`);
+		log(`\n${cyn} Links Exported!\n\n${cyn} File saved as ${chalk.yellow(`${file}`)} in ${chalk.blue(dir)} \n`);
 		spinner.stop();
 
 		if (!fs.existsSync(dir)) {
